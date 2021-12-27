@@ -38,8 +38,9 @@ public class Settings implements GuildSettingsProvider
     private RepeatMode repeatMode;
     private String prefix;
     private double skipRatio;
+    private int playlistPages;
 
-    public Settings(SettingsManager manager, String textId, String voiceId, String roleId, int volume, String defaultPlaylist, RepeatMode repeatMode, String prefix, double skipRatio)
+    public Settings(SettingsManager manager, String textId, String voiceId, String roleId, int volume, String defaultPlaylist, RepeatMode repeatMode, String prefix, double skipRatio, int playlistPages)
     {
         this.manager = manager;
         try
@@ -71,9 +72,10 @@ public class Settings implements GuildSettingsProvider
         this.repeatMode = repeatMode;
         this.prefix = prefix;
         this.skipRatio = skipRatio;
+        this.playlistPages = playlistPages;
     }
     
-    public Settings(SettingsManager manager, long textId, long voiceId, long roleId, int volume, String defaultPlaylist, RepeatMode repeatMode, String prefix, double skipRatio)
+    public Settings(SettingsManager manager, long textId, long voiceId, long roleId, int volume, String defaultPlaylist, RepeatMode repeatMode, String prefix, double skipRatio, int playlistPages)
     {
         this.manager = manager;
         this.textId = textId;
@@ -84,6 +86,7 @@ public class Settings implements GuildSettingsProvider
         this.repeatMode = repeatMode;
         this.prefix = prefix;
         this.skipRatio = skipRatio;
+        this.playlistPages = playlistPages;
     }
     
     // Getters
@@ -125,6 +128,11 @@ public class Settings implements GuildSettingsProvider
     public double getSkipRatio()
     {
         return skipRatio;
+    }
+
+    public int getPlaylistPages()
+    {
+        return playlistPages;
     }
 
     @Override
@@ -181,4 +189,11 @@ public class Settings implements GuildSettingsProvider
         this.skipRatio = skipRatio;
         this.manager.writeSettings();
     }
+
+    public void setPlaylistPages(int playlistPages)
+    {
+        this.playlistPages = playlistPages;
+        this.manager.writeSettings();
+    }
+
 }

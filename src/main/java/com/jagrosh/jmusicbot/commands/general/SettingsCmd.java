@@ -64,6 +64,7 @@ public class SettingsCmd extends Command
                                                 ? s.getRepeatMode().getUserFriendlyName()
                                                 : "**"+s.getRepeatMode().getUserFriendlyName()+"**")
                         + "\nDefault Playlist: " + (s.getDefaultPlaylist() == null ? "None" : "**" + s.getDefaultPlaylist() + "**")
+                        + "\nMaximum songs per playlist: **" + (s.getPlaylistPages() * 100) + "**"
                         )
                 .setFooter(event.getJDA().getGuilds().size() + " servers | "
                         + event.getJDA().getGuilds().stream().filter(g -> g.getSelfMember().getVoiceState().inVoiceChannel()).count()
