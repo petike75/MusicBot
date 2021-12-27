@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Peter Tamas Czibula <pterczibula@gmail.com>
+ * @author Peter Tamas Czibula <info@vergiltech.hu>
  */
 public class SetppCmd extends AdminCommand
 {

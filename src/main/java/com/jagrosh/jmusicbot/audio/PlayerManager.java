@@ -41,7 +41,7 @@ public class PlayerManager extends DefaultAudioPlayerManager
         TransformativeAudioSourceManager.createTransforms(bot.getConfig().getTransforms()).forEach(t -> registerSourceManager(t));
         AudioSourceManagers.registerRemoteSources(this);
         AudioSourceManagers.registerLocalSource(this);
-        source(YoutubeAudioSourceManager.class).setPlaylistPageCount(50);
+        source(YoutubeAudioSourceManager.class).setPlaylistPageCount(10);
     }
     
     public Bot getBot()
@@ -64,6 +64,7 @@ public class PlayerManager extends DefaultAudioPlayerManager
             handler = new AudioHandler(this, guild, player);
             player.addListener(handler);
             guild.getAudioManager().setSendingHandler(handler);
+            source(YoutubeAudioSourceManager.class).setPlaylistPageCount(bot.getSettingsManager().getSettings(guild).getPlaylistPages());
         }
         else
             handler = (AudioHandler) guild.getAudioManager().getSendingHandler();
